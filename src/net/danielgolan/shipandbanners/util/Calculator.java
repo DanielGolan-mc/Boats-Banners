@@ -1,6 +1,6 @@
 package net.danielgolan.shipandbanners.util;
 
-import net.danielgolan.shipandbanners.util.variableTypes.Ship;
+import net.danielgolan.shipandbanners.elements.Ship;
 
 import java.util.Random;
 

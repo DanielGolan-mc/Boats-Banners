@@ -1,6 +1,6 @@
-package net.danielgolan.shipandbanners.util.variableTypes;
+package net.danielgolan.shipandbanners.elements;
 
-public class ShipPowerLevel {
+class ShipPowerLevel {
     private int DAMAGE;
     private int KNOCK_BACK;
     private int KNOCK_BACK_RESISTANCE;

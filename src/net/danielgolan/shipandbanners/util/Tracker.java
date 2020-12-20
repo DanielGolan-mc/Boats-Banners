@@ -1,7 +1,7 @@
 package net.danielgolan.shipandbanners.util;
 
 public class Tracker {
-    public static class Color {
+    public class Color {
         // Reset
         public static final String RESET = "\033[0m";  // Text Reset
 
@@ -94,7 +94,7 @@ public class Tracker {
                 return true;
             } else return false;
         }
-        public static boolean trackError(boolean condition, String location, String error, boolean returning){
+        public boolean trackError(boolean condition, String location, String error, boolean returning){
             if (condition) {
                 reportError(location, error, returning);
                 return true;
@@ -127,7 +127,10 @@ public class Tracker {
             return returning;
         }
     }
-    public static class Data {
+    public class Data {
+        public final static int WINDOW_WIDTH = 640, WINDOW_HEIGHT = WINDOW_WIDTH / 12 * 9;
+        public final static String WINDOW_TITLE = "Ships & Banners";
+
         public final static String CALCULATOR_LOCATION = "net.danielgolan.shipandbanners.util.Calculator.";
     }
 }
