@@ -67,9 +67,9 @@ public abstract class ShipPrintAble extends Ship implements ShipTemplateInterfac
 
     @Override
     public String printSHIP_GRADE() {
-        String s = "🌟".repeat(Math.max(0, getShipLevel() + 1)) +
-                "⭐".repeat(Math.max(0, (getShipPowerLevels().getShipGrade() - getShipLevel()) - 1));
-        return s + " -> ";
+        return ("🌟".repeat(Math.max(0, getShipLevel() + 1)) +
+                "⭐".repeat(Math.max(0, (getShipPowerLevels().getShipGrade() - getShipLevel()) - 1))) +
+                " -> ";
     }
 
     @Override
