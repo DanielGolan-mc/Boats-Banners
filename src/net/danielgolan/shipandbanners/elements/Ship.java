@@ -15,6 +15,18 @@ abstract public class Ship {
         setShipPowerLevels(new ShipPowerLevels(shipGrade));
         setShipLevel(0);
     }
+    protected Ship(String systemName, int shipGrade, int DAMAGE, int KNOCK_BACK, int KNOCKBACK_RESISTANCE, int HEALTH_POINTS,
+                   int RESISTANCE) {
+        setSYSTEM_NAME(systemName);
+        setShipPowerLevels(new ShipPowerLevels(shipGrade, DAMAGE, KNOCK_BACK, KNOCKBACK_RESISTANCE, HEALTH_POINTS, RESISTANCE));
+        setShipLevel(0);
+    }
+    protected Ship(String systemName, int shipGrade, int shipLevel, int DAMAGE, int KNOCK_BACK, int KNOCKBACK_RESISTANCE,
+                   int HEALTH_POINTS, int RESISTANCE) {
+        setSYSTEM_NAME(systemName);
+        setShipPowerLevels(new ShipPowerLevels(shipGrade, DAMAGE, KNOCK_BACK, KNOCKBACK_RESISTANCE, HEALTH_POINTS, RESISTANCE));
+        setShipLevel(shipLevel);
+    }
 
     public String getSYSTEM_NAME() {
         return SYSTEM_NAME;
@@ -28,6 +40,9 @@ abstract public class Ship {
     }
     private void setShipPowerLevels(ShipPowerLevels shipPowerLevels) {
         this.shipPowerLevels = shipPowerLevels;
+    }
+    public void refreshShipPowerLevels(int DAMAGE, int KNOCK_BACK, int KNOCKBACK_RESISTANCE, int HEALTH_POINTS, int RESISTANCE){
+        shipPowerLevels.refreshShipPowerLevels(DAMAGE, KNOCK_BACK, KNOCKBACK_RESISTANCE, HEALTH_POINTS, RESISTANCE);
     }
 
     public int getShipLevel() {

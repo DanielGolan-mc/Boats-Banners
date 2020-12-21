@@ -1,7 +1,8 @@
 package net.danielgolan.shipandbanners.interfaces;
 
-public interface ShipTemplate {
+public interface ShipTemplateInterface {
     int DAMAGE();
+    boolean KNOCK_BACK_ENABLED();
     int KNOCK_BACK();
     int KNOCK_BACK_RESISTANCE();
     int HEALTH_POINTS();

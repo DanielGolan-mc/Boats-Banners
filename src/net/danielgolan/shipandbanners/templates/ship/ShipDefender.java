@@ -1,11 +1,11 @@
 package net.danielgolan.shipandbanners.templates.ship;
 
-import net.danielgolan.shipandbanners.elements.Ship;
-import net.danielgolan.shipandbanners.templates.ShipTemplate;
+import net.danielgolan.shipandbanners.templates.ShipLevelUpAbleTemplate;
+import net.danielgolan.shipandbanners.util.Calculator;
 
-public class ShipBasic extends ShipTemplate {
-    public ShipBasic() {
-        super("ship_basic", 1, 0);
+public class ShipDefender extends ShipLevelUpAbleTemplate {
+    public ShipDefender() {
+        super("ship_defender", 2, 0);
         super.refreshShipPowerLevels(DAMAGE(), KNOCK_BACK(), KNOCK_BACK_RESISTANCE(), HEALTH_POINTS(), RESISTANCE());
         setDamage(DAMAGE());
         setHealthPoints(HEALTH_POINTS());
@@ -23,27 +23,27 @@ public class ShipBasic extends ShipTemplate {
 
     @Override
     public boolean KNOCK_BACK_ENABLED() {
-        return false;
+        return true;
     }
 
     @Override
     public int KNOCK_BACK() {
-        return 0;
+        return 2;
     }
 
     @Override
     public int KNOCK_BACK_RESISTANCE() {
-        return 0;
+        return 1;
     }
 
     @Override
     public int HEALTH_POINTS() {
-        return 30;
+        return 50;
     }
 
     @Override
     public int RESISTANCE() {
-        return 0;
+        return 4;
     }
 
     @Override
@@ -51,5 +51,10 @@ public class ShipBasic extends ShipTemplate {
         if (min_max)
             return 5;
         else return -5;
+    }
+
+    @Override
+    public void LevelUp() {
+        Calculator.Battle.shipLevelUp(this, KNOCK_BACK_ENABLED());
     }
 }

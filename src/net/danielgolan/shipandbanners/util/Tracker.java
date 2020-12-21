@@ -1,6 +1,6 @@
 package net.danielgolan.shipandbanners.util;
 
-public class Tracker {
+public final class Tracker {
     public class Color {
         // Reset
         public static final String RESET = "\033[0m";  // Text Reset
@@ -130,6 +130,8 @@ public class Tracker {
     public class Data {
         public final static int WINDOW_WIDTH = 640, WINDOW_HEIGHT = WINDOW_WIDTH / 12 * 9;
         public final static String WINDOW_TITLE = "Ships & Banners";
+
+        public final static String COMMA = ", ";
 
         public final static String CALCULATOR_LOCATION = "net.danielgolan.shipandbanners.util.Calculator.";
     }

@@ -7,9 +7,9 @@ import java.util.Random;
 public enum Calculator {
     plus, minus, multiply, divide, nothing, infinite;
 
-    private final Random RANDOM = new Random();
+    private final static Random RANDOM = new Random();
 
-    public int randomizeAndAddANumber (int min, int max, Calculator function, int by){
+    public static int randomizeAndAddANumber(int min, int max, Calculator function, int by){
         if (Tracker.Error.trackError(min >= max, Tracker.Data.CALCULATOR_LOCATION
                 + "randomizeAndAddANumber", "min >= max", 0))
             return 0;
@@ -28,30 +28,50 @@ public enum Calculator {
                 return Tracker.Error.reportError(Tracker.Data.CALCULATOR_LOCATION + "randomizeAndAddNumber",
                         "UnSupported Value: Calculator function", 0);
     }
-    public int randomize (int min, int max) {
+    public static int randomize (int min, int max) {
         if (Tracker.Error.trackError(min >= max, Tracker.Data.CALCULATOR_LOCATION
                 + "randomizeAndAddANumber", "min >= max", 0))
             return 0;
         else return (RANDOM.nextInt(max - min) + min);
     }
 
-    public class Battle {
-        public int calculateHPRemainsToShipAfterAttack(Ship harmer, Ship defender, int defenderCurrentHealthPoints){
+    public static class Battle {
+        public static int calculateHPRemainsToShipAfterAttack(Ship harmer, Ship defender, int defenderCurrentHealthPoints){
             if (defender.getResistance() >= harmer.getDamage())
                 return defenderCurrentHealthPoints;
             else
                 return defenderCurrentHealthPoints - (calculateDamageShipCausing(harmer)) + defender.getResistance();
         }
-        public int calculateHPRemainsToShipAfterAttack(Ship harmer, Ship defender){
+        public static int calculateHPRemainsToShipAfterAttack(Ship harmer, Ship defender){
             if (defender.getResistance() >= harmer.getDamage())
                 return defender.getHealthPoints();
             else
                 return defender.getHealthPoints() - calculateDamageShipCausing(harmer) + defender.getResistance();
         }
 
-        public int calculateDamageShipCausing(Ship harmer){
+        public static int calculateDamageShipCausing(Ship harmer){
             return randomizeAndAddANumber(harmer.getDamageChances(false), harmer.getDamageChances(true),
                     plus, harmer.getDamage());
+        }
+
+        public static Ship shipLevelUp(Ship ship, boolean enableKnockBack) {
+            ship.setShipLevel(1);
+
+            if (enableKnockBack) {
+                ship.setKnockBack((int) (ship.getKnockBack(0) * 1.5 + 1));
+                ship.setKnockBackResistance(ship.getKnockBack() / 2);
+            }
+
+            ship.setHealthPoints((int) (ship.getHealthPoints() * 1.25));
+            ship.setResistance(ship.getResistance() + (int) (ship.getHealthPoints() * 0.1));
+
+            ship.setDamage((int) (ship.getDamage(0) * 1.3));
+
+            ship.setDamageChances(ship.getDamageChances(0, true) +
+                    (int) (ship.getDamageChances(0, true) * 0.3), true);
+            ship.setDamageChances(ship.getDamageChances(0, false) +
+                    (int) (ship.getDamageChances(0, false) * 0.3), false);
+            return ship;
         }
     }
 }
