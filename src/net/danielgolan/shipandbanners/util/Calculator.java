@@ -55,7 +55,7 @@ public enum Calculator {
         }
 
         public static Ship shipLevelUp(Ship ship, boolean enableKnockBack) {
-            ship.setShipLevel(1);
+            ship.setShipLevel(ship.getShipLevel() + 1);
 
             if (enableKnockBack) {
                 ship.setKnockBack((int) (ship.getKnockBack(0) * 1.5 + 1));
@@ -63,7 +63,7 @@ public enum Calculator {
             }
 
             ship.setHealthPoints((int) (ship.getHealthPoints() * 1.25));
-            ship.setResistance(ship.getResistance() + (int) (ship.getHealthPoints() * 0.1));
+            ship.setResistance((int) (ship.getHealthPoints() * 0.07));
 
             ship.setDamage((int) (ship.getDamage(0) * 1.3));
 

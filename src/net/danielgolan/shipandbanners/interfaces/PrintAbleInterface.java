@@ -1,5 +1,5 @@
 package net.danielgolan.shipandbanners.interfaces;
 
-public interface Printable {
+public interface PrintAbleInterface {
     String printStats(boolean colored);
 }

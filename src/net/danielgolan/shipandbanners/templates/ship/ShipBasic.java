@@ -1,9 +1,8 @@
 package net.danielgolan.shipandbanners.templates.ship;
 
-import net.danielgolan.shipandbanners.elements.Ship;
-import net.danielgolan.shipandbanners.templates.ShipTemplate;
+import net.danielgolan.shipandbanners.elements.ShipPrintAble;
 
-public class ShipBasic extends ShipTemplate {
+public class ShipBasic extends ShipPrintAble {
     public ShipBasic() {
         super("ship_basic", 1, 0);
         super.refreshShipPowerLevels(DAMAGE(), KNOCK_BACK(), KNOCK_BACK_RESISTANCE(), HEALTH_POINTS(), RESISTANCE());

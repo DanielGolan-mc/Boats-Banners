@@ -1,5 +1,7 @@
 package net.danielgolan.shipandbanners;
 
+import net.danielgolan.shipandbanners.elements.Ship;
+import net.danielgolan.shipandbanners.elements.ShipPrintAble;
 import net.danielgolan.shipandbanners.templates.ship.ShipBasic;
 import net.danielgolan.shipandbanners.templates.ship.ShipDefender;
 import net.danielgolan.shipandbanners.util.Tracker;
@@ -15,10 +17,17 @@ public class Main {
         System.out.println("- Store Ships And Ships Levels");
         System.out.println("- Tracker, that can manage color, errors, and data.");
         System.out.println("- Calculator, that calculates the math");
+        System.out.println("- Manage Ship types, Ship Grades Ship Templates, Ship printing And More");
         System.out.println(Tracker.Color.WHITE + "- And More Coming Soon!" + Tracker.Color.RESET);
 
         System.out.println();
-        System.out.println(new ShipDefender().printStats(true));
-        System.out.println(new ShipBasic().printStats(true));
+        ShipPrintAble[] ships = {new ShipBasic()};
+        ShipDefender shipDefender = new ShipDefender();
+        System.out.println(shipDefender.printStats(true));
+        System.out.println(ships[0].printStats(true));
+
+        System.out.println();
+        shipDefender.addXP(shipDefender.getMAX_XP());
+        System.out.println(shipDefender.printStats(true));
     }
 }

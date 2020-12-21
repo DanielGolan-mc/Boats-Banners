@@ -1,9 +1,8 @@
 package net.danielgolan.shipandbanners.templates.ship;
 
-import net.danielgolan.shipandbanners.templates.ShipLevelUpAbleTemplate;
-import net.danielgolan.shipandbanners.util.Calculator;
+import net.danielgolan.shipandbanners.elements.ShipLevelUpAble;
 
-public class ShipDefender extends ShipLevelUpAbleTemplate {
+public class ShipDefender extends ShipLevelUpAble {
     public ShipDefender() {
         super("ship_defender", 2, 0);
         super.refreshShipPowerLevels(DAMAGE(), KNOCK_BACK(), KNOCK_BACK_RESISTANCE(), HEALTH_POINTS(), RESISTANCE());
@@ -38,7 +37,7 @@ public class ShipDefender extends ShipLevelUpAbleTemplate {
 
     @Override
     public int HEALTH_POINTS() {
-        return 50;
+        return 48;
     }
 
     @Override
@@ -54,7 +53,7 @@ public class ShipDefender extends ShipLevelUpAbleTemplate {
     }
 
     @Override
-    public void LevelUp() {
-        Calculator.Battle.shipLevelUp(this, KNOCK_BACK_ENABLED());
+    public int getMAX_XP() {
+        return super.getMAX_XP();
     }
 }
